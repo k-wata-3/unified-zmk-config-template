@@ -97,9 +97,9 @@ keymap {
     layer_1 {
         bindings = <
             &kp ESC   &kp N1  &kp N2  &kp N3  &kp N4  &kp N5      &kp N6    &kp N7    &kp N8    &kp N9    &kp N0 &kp DEL
-            &kp TABL  &trans &trans &trans &trans &trans          &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &trans &trans
-            &kp LSHFT &trans &trans &trans &trans &trans          &kp HOME  &kp PG_DN &kp PG_UP &kp END   &trans &trans
-            &kp CTRL  &trans               &trans &trans          &trans    &trans                        &trans &trans
+            &kp TABL  &trans  &trans  &trans  &trans  &trans      &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &trans &trans
+            &kp LSHFT &trans  &trans  &trans  &trans  &trans      &kp HOME  &kp PG_DN &kp PG_UP &kp END   &trans &trans
+            &kp CTRL  &trans                  &trans  &trans      &trans    &trans                        &trans &trans
         >;
     };
 
@@ -108,7 +108,7 @@ keymap {
             &kp ESC   &kp F1  &kp F2  &kp F3  &kp F4   &trans     &trans    &kp MINUS &kp EQUAL &trans     &trans   &trans
             &kp TABL  &kp F5  &kp F6  &kp F7  &kp F8   &trans     &kp LBKT  &kp RBKT  &kp NUBS  &trans     &trans   &trans
             &kp LSHFT &kp F9  &kp F10 &kp F11 &kp F12  &trans     &kp SEMI  &kp SQT   &trans    &kp QMARK  &kp BSLH &trans
-            &kp CTRL  &trans                  &trans  &trans      &trans    &trans                         &trans   &trans
+            &kp CTRL  &trans                  &trans   &trans     &trans    &trans                         &trans   &trans
         >;
 		//レイヤー2のときだけ、左手のエンコーダを回すとボリュームの上下ができるようになっています。
 		sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &ec_ms_r SCRL_DOWN SCRL_UP>;
