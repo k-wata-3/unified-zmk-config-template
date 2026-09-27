@@ -29,49 +29,25 @@
 /{
     combos {
         compatible = "zmk,combos";
-
-        //-----------------------------------------------------
-        //0レイヤーのコンボ
-        //-----------------------------------------------------
-        //英数入力 16はD、17はFのキーに相当
-	    combo_LANG2 {
-            timeout-ms = <50>;
-            key-positions = <16 17>;
-            bindings = <&kp LANG2>;
-            layers = <0>; //0番レイヤーでのみ有効にする
-        };
-        //かな入力 19はJのキー 20はKのキーに相当
-	    combo_LANG1 {
-            timeout-ms = <50>;
-            key-positions = <19 20>;
-            bindings = <&kp LANG1>;
-            layers = <0>; //0番レイヤーでのみ有効にする
-        };
-
-
-        //-----------------------------------------------------
-        //1レイヤーのコンボ
-        //-----------------------------------------------------
 		//左クリックのコンボ 19はJのキー 20はKのキーに相当します。
 	    combo_LCLK {
             timeout-ms = <50>;
             key-positions = <19 20>;
             bindings = <&mkp LCLK>;
-            layers = <1>; //1番レイヤーでのみ有効にする
         };
+
 		//右クリックのコンボ 20 K 21 L
         combo_RCLK {
             timeout-ms = <50>;
             key-positions = <20 21>;
             bindings = <&mkp RCLK>;
-            layers = <1>; //1番レイヤーでのみ有効にする
         };
+
 		//ホイールクリックのコンボ 19 J 21 L
 	    combo_MCLK {
-            timeout-ms = <970>;
+            timeout-ms = <90>;
             key-positions = <19 21>;
             bindings = <&mkp MCLK>;
-            layers = <1>; //1番レイヤーでのみ有効にする
         };
 
     };
@@ -81,35 +57,32 @@
 keymap {
     compatible = "zmk,keymap";
 
-    //0番レイヤー 主にアルファベットキーを入力する
     default_layer {
         bindings = <
-            &kp TAB    &kp Q   &kp W  &kp E  &kp R  &kp T          &kp Y  &kp U  &kp I      &kp O    &kp P     &kp BSPC
-            &kp LCTRL  &kp A   &kp S  &kp D  &kp F  &kp G          &kp H  &kp J  &kp K      &kp L    &kp SQT   &kp ENTER
-            &kp LSHFT  &kp Z   &kp X  &kp C  &kp V  &kp B          &kp N  &kp M  &kp COMMA  &kp DOT  &kp LBRC  &kp RBKT
-            &kp ESC    &kp LALT              &mo 2  &kp SPACE      &mo 1  &kp MINUS                  &mo 3     &kp LGUI
+            &kp TAB    &kp Q   &kp W  &kp E  &kp R  &kp T      &kp Y  &kp U  &kp I      &kp O    &kp P     &kp BSPC
+            &kp LCTRL  &kp A   &kp S  &kp D  &kp F  &kp G      &kp H  &kp J  &kp K      &kp L    &kp SQT   &kp ENTER
+            &kp LSHFT  &kp Z   &kp X  &kp C  &kp V  &kp B      &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH &kp LSHFT
+            &kp ESC    &kp LALT              &mo 2  &kp SPACE  &mo 1  &kp LA(GRAVE)              &mo 3     &kp LGUI
         >;
 		//&ec_ms_lとrは、上のビヘイビアで作ったもの。
         sensor-bindings = <&ec_ms_l SCRL_LEFT SCRL_RIGHT &ec_ms_r SCRL_DOWN SCRL_UP>;
     };
-
-    //1番レイヤー 矢印キーやHome_End、PageUp_Down、マウスクリックを入力する
+	
     layer_1 {
         bindings = <
-            &kp GRAVE &kp N1  &kp N2  &kp N3  &kp N4  &kp N5       &kp N6    &kp N7    &kp N8    &kp N9    &kp N0 &kp DEL
-            &trans    &trans &trans &trans &trans &trans           &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &trans &trans
-            &trans    &trans &trans &trans &trans &trans           &kp HOME  &kp PG_DN &kp PG_UP &kp END   &trans &trans
-            &trans    &trans               &trans &trans           &trans    &trans                        &trans &trans
+            &kp GRAVE &kp N1  &kp N2  &kp N3  &kp N4  &kp N5       &kp N6    &kp N7   &kp N8   &kp N9    &kp N0 &kp DEL
+            &trans    &trans &trans &trans &trans &trans           &kp PG_UP &kp HOME &kp UP   &kp END   &trans &trans
+            &trans    &trans &trans &trans &trans &trans           &kp PG_DN &kp LEFT &kp DOWN &kp RIGHT &trans &trans
+            &trans    &trans               &trans &trans           &trans    &trans                      &trans &trans
         >;
     };
 
-    //2番レイヤー ファンクションキーやテンキーを入力する
     layer_2 {
         bindings = <
-            &trans &kp F1  &kp F2  &kp F3  &kp F4                  &trans  &trans    &kp MINUS &kp EQUAL &trans     &trans
-            &trans &kp F5  &kp F6  &kp F7  &kp F8                  &trans  &kp LBKT  &kp RBKT  &kp NUBS  &trans     &trans
-            &trans &kp F9  &kp F10 &kp F11 &kp F12                 &trans  &kp SEMI  &kp SQT   &trans    &kp QMARK  &kp BSLH
-            &trans &trans                  &trans  &trans          &trans  &trans                        &trans     &trans
+            &trans &kp F1  &kp F2  &kp F3  &kp F4  &kp F5     &trans  &trans    &kp MINUS &kp EQUAL &trans     &trans
+            &trans &kp F6  &kp F7  &kp F8  &kp F9  &kp F10    &trans  &kp LBKT  &kp RBKT  &kp NUBS  &trans     &trans
+            &trans &kp F11 &kp F12 &kp F13 &kp F14 &kp F15    &trans  &kp SEMI  &kp SQT   &trans    &kp QMARK  &kp BSLH
+            &trans &trans                  &trans  &trans     &trans  &trans                        &trans     &trans
         >;
 		//レイヤー2のときだけ、左手のエンコーダを回すとボリュームの上下ができるようになっています。
 		sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &ec_ms_r SCRL_DOWN SCRL_UP>;
@@ -118,10 +91,10 @@ keymap {
 
     layer_3 {
         bindings = <
-            &trans        &trans &trans &trans &trans &trans       &kp   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3   &bt BT_SEL 4
-            &bt BT_SEL 0  &trans &trans &trans &trans &trans       &trans  &trans      &trans        &trans        &trans         &trans
-            &bt BT_SEL 1  &trans &trans &trans &trans &trans       &trans  &trans      &trans        &trans        &bt BT_CLR_ALL &bt BT_CLR
-            &bt BT_SEL 2  &trans               &trans &trans       &trans  &out OUT_BLE                            &trans         &trans
+            &trans &trans &trans &trans &trans &trans      &trans  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3   &bt BT_SEL 4
+            &trans &trans &trans &trans &trans &trans      &trans  &trans        &trans        &trans        &trans         &trans
+            &trans &trans &trans &trans &trans &trans      &trans  &trans        &trans        &trans        &bt BT_CLR_ALL &bt BT_CLR
+            &trans &trans               &trans &trans      &trans  &out OUT_BLE                                    &trans         &trans
         >;
     };
     scroll {
