@@ -29,6 +29,29 @@
 /{
     combos {
         compatible = "zmk,combos";
+
+        //-----------------------------------------------------
+        //0レイヤーのコンボ
+        //-----------------------------------------------------
+        //英数入力 16はD、17はFのキーに相当
+	    combo_LANG2 {
+            timeout-ms = <50>;
+            key-positions = <16 17>;
+            bindings = <&kp LANG2>;
+            layers = <0>; //0番レイヤーでのみ有効にする
+        };
+        //かな入力 19はJのキー 20はKのキーに相当
+	    combo_LANG1 {
+            timeout-ms = <50>;
+            key-positions = <19 20>;
+            bindings = <&kp LANG1>;
+            layers = <0>; //0番レイヤーでのみ有効にする
+        };
+
+
+        //-----------------------------------------------------
+        //1レイヤーのコンボ
+        //-----------------------------------------------------
 		//左クリックのコンボ 19はJのキー 20はKのキーに相当します。
 	    combo_LCLK {
             timeout-ms = <50>;
@@ -70,7 +93,7 @@ keymap {
 		//&ec_ms_lとrは、上のビヘイビアで作ったもの。
         sensor-bindings = <&ec_ms_l SCRL_LEFT SCRL_RIGHT &ec_ms_r SCRL_DOWN SCRL_UP>;
     };
-	
+
     layer_1 {
         bindings = <
             &kp GRAVE &kp N1  &kp N2  &kp N3  &kp N4  &kp N5       &kp N6    &kp N7   &kp N8   &kp N9    &kp N0 &kp DEL
