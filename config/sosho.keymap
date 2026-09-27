@@ -34,6 +34,7 @@
             timeout-ms = <50>;
             key-positions = <19 20>;
             bindings = <&mkp LCLK>;
+            layers = <1>; //1番レイヤーでのみ有効にする
         };
 
 		//右クリックのコンボ 20 K 21 L
@@ -41,6 +42,7 @@
             timeout-ms = <50>;
             key-positions = <20 21>;
             bindings = <&mkp RCLK>;
+            layers = <1>; //1番レイヤーでのみ有効にする
         };
 
 		//ホイールクリックのコンボ 19 J 21 L
@@ -48,6 +50,7 @@
             timeout-ms = <90>;
             key-positions = <19 21>;
             bindings = <&mkp MCLK>;
+            layers = <1>; //1番レイヤーでのみ有効にする
         };
 
     };
