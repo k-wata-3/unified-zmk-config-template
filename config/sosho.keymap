@@ -1,6 +1,38 @@
 //スクロール量の調整(デフォルト150)
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 150
 
+// OS設定を日本語キーボードのまま使用するための変換定義
+#define JP_DQUOTE       AT                // "
+#define JP_AMPERSAND    CARET             // &
+#define JP_QUOTE        AMPERSAND         // '
+#define JP_EQUAL        UNDER             // =
+#define JP_CARET        EQUAL             // ^
+#define JP_YEN          0x89              // ¥
+#define JP_PLUS         COLON             // +
+#define JP_TILDE        PLUS              // ~
+#define JP_PIPE         LS(0x89)          // |
+#define JP_AT           LEFT_BRACKET      // @
+#define JP_COLON        SINGLE_QUOTE      // :
+#define JP_ASTERISK     DOUBLE_QUOTES     // *
+#define JP_BACKQUOTE    LEFT_BRACE        // `
+#define JP_UNDERSCORE   LS(0x87)          // _
+#define JP_LBRACKET     RIGHT_BRACKET     // [
+#define JP_RBRACKET     BACKSLASH         // ]
+#define JP_LPAREN       ASTERISK          // (
+#define JP_RPAREN       LEFT_PARENTHESIS  // )
+#define JP_LBRACE       RIGHT_BRACE       // {
+#define JP_RBRACE       PIPE              // }
+#define JP_KANA         LANGUAGE_1        // かな
+#define JP_EISU         LANGUAGE_2        // 英数
+#define JP_HANZEN       GRAVE             // 半角/全角
+
+//スクリーンショット(Win + Shift + S)
+#define SC_GS_s LG(LS(S))
+//タスクマネージャー(Ctrl + Shift + ESC)
+#define SC_CS_esc LS(LC(ESC))
+//ウインドウ起動(Ctrl + Shift + Delete)
+#define SC_C_S_DEL LA(LC(DEL))
+
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
@@ -33,48 +65,53 @@
         //-----------------------------------------------------
         //0レイヤーのコンボ
         //-----------------------------------------------------
-        //英数入力 16はD、17はFのキーに相当
+        //英数入力 16はF、17はGのキーに相当
 	    combo_LANG2 {
             timeout-ms = <50>;
-            key-positions = <15 16>;
+            key-positions = <16 17>;
             bindings = <&kp LANG2>;
             layers = <0>; //0番レイヤーでのみ有効にする
         };
-        //かな入力 19はJのキー 20はKのキーに相当
+        //かな入力 18はH、19はJのキー のキーに相当
 	    combo_LANG1 {
             timeout-ms = <50>;
-            key-positions = <19 20>;
+            key-positions = <18 19>;
             bindings = <&kp LANG1>;
             layers = <0>; //0番レイヤーでのみ有効にする
         };
+        //3番レイヤー 38はMO1のキー 39はSpaceのキーに相当
+	    combo_MO3 {
+            timeout-ms = <50>;
+            key-positions = <38 39>;
+            bindings = <&mo 3>;
+            layers = <0>; //0番レイヤーでのみ有効にする
+        };
 
-
-        //-----------------------------------------------------
-        //1レイヤーのコンボ
-        //-----------------------------------------------------
 		//左クリックのコンボ 19はJのキー 20はKのキーに相当します。
 	    combo_LCLK {
             timeout-ms = <50>;
             key-positions = <19 20>;
             bindings = <&mkp LCLK>;
-            layers = <1>; //1番レイヤーでのみ有効にする
+            layers = <0>; //0番レイヤーでのみ有効にする
         };
-
 		//右クリックのコンボ 20 K 21 L
         combo_RCLK {
             timeout-ms = <50>;
             key-positions = <20 21>;
             bindings = <&mkp RCLK>;
-            layers = <1>; //1番レイヤーでのみ有効にする
+            layers = <0>; //0番レイヤーでのみ有効にする
         };
-
 		//ホイールクリックのコンボ 19 J 21 L
 	    combo_MCLK {
             timeout-ms = <90>;
             key-positions = <19 21>;
             bindings = <&mkp MCLK>;
-            layers = <1>; //1番レイヤーでのみ有効にする
+            layers = <0>; //0番レイヤーでのみ有効にする
         };
+
+        //-----------------------------------------------------
+        //1レイヤーのコンボ
+        //-----------------------------------------------------
 
     };
 };
@@ -105,10 +142,10 @@ keymap {
 
     layer_2 {
         bindings = <
-            &kp ESC   &kp F1  &kp F2  &kp F3  &kp F4  &kp F5      &trans  &trans    &kp MINUS &kp EQUAL &trans     &trans
-            &kp TAB   &kp F6  &kp F7  &kp F8  &kp F9  &kp F10     &trans  &kp LBKT  &kp RBKT  &kp NUBS  &trans     &trans
-            &kp LSHFT &kp F11 &kp F12 &trans  &trans  &trans      &trans  &kp SEMI  &kp SQT   &trans    &kp QMARK  &kp BSLH
-            &kp LCTRL &trans          &trans  &trans  &trans      &trans  &trans                        &trans     &trans
+            &kp ESC   &kp F1  &kp F2  &kp F3  &kp F4         &kp F5           &trans  &trans    &kp MINUS &kp EQUAL &trans     &trans
+            &kp TAB   &kp F6  &kp F7  &kp F8  &kp F9         &kp F10          &trans  &kp LBKT  &kp RBKT  &kp NUBS  &trans     &trans
+            &kp LSHFT &kp F11 &kp F12 &trans  &trans         &trans           &trans  &kp SEMI  &kp SQT   &trans    &kp QMARK  &kp BSLH
+            &kp LCTRL &trans          &trans  &kp SC_CS_esc  &kp SC_GS_s      &trans  &trans                        &trans     &trans
         >;
 		//レイヤー2のときだけ、左手のエンコーダを回すとボリュームの上下ができるようになっています。
 		sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &ec_ms_r SCRL_DOWN SCRL_UP>;
