@@ -50,40 +50,6 @@
             compatible = "zmk,behavior-encoder-mouse-scroll";
             #sensor-binding-cells = <2>;
         };
-
-        //1回タップの長押しで &mo 1、2回タップの長押しで &mo 2
-        mo12: mo12 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&mo 1>, <&mo 2>;
-        };
-
-        // 1回タップ:
-        //   通常      -> ;
-        //   Shift中   -> +
-        semi_plus: semi_plus {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp SEMICOLON>, <&kp PLUS>;
-            mods = <(MOD_LSFT | MOD_RSFT)>;
-        };
-        // 2回タップ:
-        //   通常      -> :
-        //   Shift中   -> *
-        colon_star: colon_star {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp COLON>, <&kp ASTERISK>;
-            mods = <(MOD_LSFT | MOD_RSFT)>;
-        };
-        // タップ回数で切り替える
-        semi_colon_td: semi_colon_td {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&semi_plus>, <&colon_star>;
-        };
     };
 };
 
