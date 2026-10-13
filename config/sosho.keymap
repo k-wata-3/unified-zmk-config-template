@@ -31,7 +31,7 @@
 //タスクマネージャー(Ctrl + Shift + ESC)
 #define SC_CS_esc LS(LC(ESC))
 //ウインドウ起動(Ctrl + Shift + Delete)
-#define SC_C_S_del LA(LC(DEL))
+#define SC_CS_del LA(LC(DEL))
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
