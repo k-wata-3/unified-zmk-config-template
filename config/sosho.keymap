@@ -76,13 +76,40 @@
             bindings = <&kp COLON>, <&kp ASTERISK>;
             mods = <(MOD_LSFT | MOD_RSFT)>;
         };
-        // タップ回数で切り替える
+
+        // 1回タップ：ホールドで Layer 1、タップで ; / +
+        semi_hold: semi_hold {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&semi_plus>;
+        };
+        // 2回タップ：ホールドで Layer 2、タップで : / *
+        colon_hold: colon_hold {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&colon_star>;
+        };
+
+        // タップ回数で切り替え
+        // 1回タップ：ホールドで Layer 1、タップで ; / +
+        // 2回タップ：ホールドで Layer 2、タップで : / *
         semi_colon_td: semi_colon_td {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&semi_plus>, <&colon_star>;
+            bindings = <&semi_hold 1 0>, <&colon_hold 2 0>;
         };
+        // タップ回数で切り替え(ホールドなし)
+        // semi_colon_td: semi_colon_td {
+        //     compatible = "zmk,behavior-tap-dance";
+        //     #binding-cells = <0>;
+        //     tapping-term-ms = <200>;
+        //     bindings = <&semi_plus>, <&colon_star>;
+        // };
     };
 };
 
@@ -95,6 +122,13 @@
 /{
     combos {
         compatible = "zmk,combos";
+        //-----------------------------------------------------
+        // キーマップに対応する番号(キーではなくキーの配置で同時押しを判定している)
+        //-----------------------------------------------------
+        // [ 0] [ 1] [ 2] [ 3] [ 4] [ 5]   [ 6] [ 7] [ 8] [ 9] [10] [11]
+        // [12] [13] [14] [15] [16] [17]   [18] [19] [20] [21] [22] [23]
+        // [24] [25] [26] [27] [28] [29]   [30] [31] [32] [33] [34] [35]
+        // [36] [37]           [38] [39]   [40] [41]           [42] [43]
 
         //-----------------------------------------------------
         //0レイヤーのコンボ
@@ -156,10 +190,10 @@ keymap {
 
     default_layer {
         bindings = <
-            &kp ESC   &kp Q   &kp W  &kp E  &kp R  &kp T          &kp Y  &kp U  &kp I      &kp O    &kp P     &kp BSPC
-            &kp TAB   &kp A   &kp S  &kp D  &kp F  &kp G          &kp H  &kp J  &kp K      &kp L    &kp SQT   &kp ENTER
-            &kp LSHFT &kp Z   &kp X  &kp C  &kp V  &kp B          &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH &kp LSHFT
-            &kp LCTRL &kp LALT              &mo12  &kp SPACE      &mo 2  &kp LA(GRAVE)              &mo 3     &kp LGUI
+            &kp ESC   &kp Q   &kp W  &kp E  &kp R  &kp T          &kp Y           &kp U  &kp I      &kp O    &kp P     &kp BSPC
+            &kp TAB   &kp A   &kp S  &kp D  &kp F  &kp G          &kp H           &kp J  &kp K      &kp L    &kp SQT   &kp ENTER
+            &kp LSHFT &kp Z   &kp X  &kp C  &kp V  &kp B          &kp N           &kp M  &kp COMMA  &kp DOT  &kp SLASH &kp LSHFT
+            &kp LCTRL &kp LALT              &mo12  &kp SPACE      &semi_colon_td  &kp MINUS                   &mo 3     &kp LGUI
         >;
 		//&ec_ms_lとrは、上のビヘイビアで作ったもの。
         sensor-bindings = <&ec_ms_l SCRL_LEFT SCRL_RIGHT &ec_ms_r SCRL_DOWN SCRL_UP>;
