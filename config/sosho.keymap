@@ -54,7 +54,7 @@
         mo12: mo12 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <100>;
             bindings = <&mo 1>, <&mo 2>;
         };
 
@@ -147,6 +147,7 @@
             bindings = <&kp LANG1>;
             layers = <0>; //0番レイヤーでのみ有効にする
         };
+
         //3番レイヤー 38はMO1のキー 39はSpaceのキーに相当
 	    combo_MO3 {
             timeout-ms = <50>;
@@ -210,10 +211,10 @@ keymap {
 
     layer_2 {
         bindings = <
-            &kp ESC   &kp F1  &kp F2  &kp F3         &kp F4         &kp F5           &trans  &trans    &kp MINUS &kp EQUAL &trans     &trans
-            &kp TAB   &kp F6  &kp F7  &kp F8         &kp F9         &kp F10          &trans  &kp LBKT  &kp RBKT  &kp NUBS  &trans     &trans
-            &kp LSHFT &kp F11 &kp F12 &trans         &trans         &trans           &trans  &kp SEMI  &kp SQT   &trans    &kp QMARK  &kp BSLH
-            &kp LCTRL &trans          &kp SC_CS_del  &kp SC_CS_esc  &kp SC_GS_s      &trans  &trans                        &trans     &trans
+            &kp ESC   &kp F1  &kp F2  &kp F3         &kp F4         &kp F5           &kp KP_N7 &kp KP_N8 &kp KP_N9  &kp KP_PLUS     &kp KP_MINUS  &kp GRAVE     &trans
+            &kp TAB   &kp F6  &kp F7  &kp F8         &kp F9         &kp F10          &kp KP_N4 &kp KP_N5 &kp KP_N6  &kp KP_MULTIPLY &kp KP_DIVIDE &trans
+            &kp LSHFT &kp F11 &kp F12 &trans         &trans         &trans           &kp KP_N1 &kp KP_N2 &kp KP_N3  &trans          &kp QMARK     &trans
+            &kp LCTRL &trans          &kp SC_CS_del  &kp SC_CS_esc  &kp SC_GS_s      &kp KP_N0 &kp KP_DOT                           &trans        &trans
         >;
 		//レイヤー2のときだけ、左手のエンコーダを回すとボリュームの上下ができるようになっています。
 		sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &ec_ms_r SCRL_DOWN SCRL_UP>;
