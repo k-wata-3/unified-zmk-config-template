@@ -103,13 +103,15 @@
             tapping-term-ms = <200>;
             bindings = <&semi_hold 1 0>, <&colon_hold 2 0>;
         };
-        // タップ回数で切り替え(ホールドなし)
-        // semi_colon_td: semi_colon_td {
-        //     compatible = "zmk,behavior-tap-dance";
-        //     #binding-cells = <0>;
-        //     tapping-term-ms = <200>;
-        //     bindings = <&semi_plus>, <&colon_star>;
-        // };
+
+        // 1回タップ：ALTを長押し
+        // 2回タップ：Windowsキーを長押し
+        alt_win_td: alt_win_td {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp LALT>, <&kp LGUI>;
+        };
     };
 };
 
