@@ -103,13 +103,32 @@
             tapping-term-ms = <200>;
             bindings = <&semi_hold 1 0>, <&colon_hold 2 0>;
         };
-        // タップ回数で切り替え(ホールドなし)
-        // semi_colon_td: semi_colon_td {
-        //     compatible = "zmk,behavior-tap-dance";
-        //     #binding-cells = <0>;
-        //     tapping-term-ms = <200>;
-        //     bindings = <&semi_plus>, <&colon_star>;
-        // };
+
+        // 1回タップ：ホールドで ALT
+        alt_hold: alt_hold {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp LALT>
+        };
+        // 2回タップ：ホールドで Win
+        win_hold: win_hold {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&kp LGUI>
+        };
+        // タップ回数で切り替え
+        // 1回タップ：ホールドで ALT
+        // 2回タップ：ホールドで Win
+        win_alt_td: win_alt_td {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&alt_hold 1 0>, <&win_hold 2 0>;
+        };
     };
 };
 
