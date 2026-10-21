@@ -196,7 +196,7 @@ keymap {
             &kp ESC   &kp Q    &kp W  &kp E  &kp R  &kp T          &kp Y           &kp U  &kp I      &kp O    &kp P     &kp BSPC
             &kp TAB   &kp A    &kp S  &kp D  &kp F  &kp G          &kp H           &kp J  &kp K      &kp L    &kp SQT   &kp ENTER
             &kp LSHFT &kp Z    &kp X  &kp C  &kp V  &kp B          &kp N           &kp M  &kp COMMA  &kp DOT  &kp SLASH &kp LSHFT
-            &kp LCTRL &kp LGUI               &mo12  &kp SPACE      &semi_colon_td  &kp MINUS                  &mo 3     &kp LALT
+            &kp LCTRL &alt_win_td            &mo12  &kp SPACE      &semi_colon_td  &kp MINUS                  &mo 3     &trans
         >;
 		//&ec_ms_lとrは、上のビヘイビアで作ったもの。
         sensor-bindings = <&ec_ms_l SCRL_LEFT SCRL_RIGHT &ec_ms_r SCRL_DOWN SCRL_UP>;
@@ -207,7 +207,7 @@ keymap {
             &kp ESC   &kp N1   &kp N2  &kp N3  &kp N4  &kp N5      &kp N6    &kp N7    &kp N8    &kp N9    &kp N0 &kp DEL
             &kp TAB   &trans   &trans  &trans  &trans  &trans      &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &trans &trans
             &kp LSHFT &trans   &trans  &trans  &trans  &trans      &kp HOME  &kp PG_DN &kp PG_UP &kp END   &trans &trans
-            &kp LCTRL &kp LGUI                 &trans  &trans      &trans    &trans                        &trans &trans
+            &kp LCTRL &alt_win_td              &trans  &trans      &trans    &trans                        &trans &trans
         >;
     };
 
@@ -216,7 +216,7 @@ keymap {
             &kp ESC   &kp F1   &kp F2  &kp F3  &kp F4         &kp F5           &kp KP_N7 &kp KP_N8 &kp KP_N9  &kp KP_PLUS     &kp KP_MINUS  &kp GRAVE
             &kp TAB   &kp F6   &kp F7  &kp F8  &kp F9         &kp F10          &kp KP_N4 &kp KP_N5 &kp KP_N6  &kp KP_MULTIPLY &kp KP_DIVIDE &trans
             &kp LSHFT &kp F11  &kp F12 &trans  &trans         &trans           &kp KP_N1 &kp KP_N2 &kp KP_N3  &trans          &kp QMARK     &trans
-            &kp LCTRL &kp LGUI                 &kp SC_CS_esc  &kp SC_GS_s      &kp KP_N0 &kp KP_DOT                           &trans        &trans
+            &kp LCTRL alt_win_td               &kp SC_CS_esc  &kp SC_GS_s      &kp KP_N0 &kp KP_DOT                           &trans        &trans
         >;
 		//レイヤー2のときだけ、左手のエンコーダを回すとボリュームの上下ができるようになっています。
 		sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &ec_ms_r SCRL_DOWN SCRL_UP>;
