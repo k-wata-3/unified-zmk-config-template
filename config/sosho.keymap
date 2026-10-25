@@ -182,7 +182,7 @@
 
         //SPACEのコンボ 42はLEFTのキー 43はRIGHTのキーに相当
 	    combo_SPACE {
-            timeout-ms = <90>;
+            timeout-ms = <50>;
             key-positions = <42 43>;
             bindings = <&kp SPACE>;
             layers = <0>; //0番レイヤーでのみ有効にする
