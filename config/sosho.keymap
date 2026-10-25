@@ -188,7 +188,7 @@
         };
 
         //SPACEのコンボ 42はLEFTのキー 43はRIGHTのキーに相当
-	    combo_BSCR {
+	    combo_SPACE {
             timeout-ms = <90>;
             key-positions = <42 43>;
             bindings = <&kp SPACE>;
