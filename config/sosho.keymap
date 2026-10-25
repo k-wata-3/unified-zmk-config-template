@@ -179,6 +179,22 @@
             bindings = <&mkp MCLK>;
             layers = <0>; //0番レイヤーでのみ有効にする
         };
+        //ボールスクロールのコンボ 18はHのキー 22は/のキーに相当
+	    combo_BSCR {
+            timeout-ms = <90>;
+            key-positions = <18 22>;
+            bindings = <&zip_xy_to_scroll_mapper>;
+            layers = <0>; //0番レイヤーでのみ有効にする
+        };
+
+        //SPACEのコンボ 42はLEFTのキー 43はRIGHTのキーに相当
+	    combo_BSCR {
+            timeout-ms = <90>;
+            key-positions = <42 43>;
+            bindings = <&kp SPACE>;
+            layers = <0>; //0番レイヤーでのみ有効にする
+        };
+
 
         //-----------------------------------------------------
         //1レイヤーのコンボ
@@ -193,10 +209,10 @@ keymap {
 
     default_layer {
         bindings = <
-            &kp ESC   &kp Q    &kp W  &kp E  &kp R  &kp T          &kp Y           &kp U  &kp I      &kp O    &kp P     &kp BSPC
-            &kp TAB   &kp A    &kp S  &kp D  &kp F  &kp G          &kp H           &kp J  &kp K      &kp L    &kp SQT   &kp ENTER
-            &kp LSHFT &kp Z    &kp X  &kp C  &kp V  &kp B          &kp N           &kp M  &kp COMMA  &kp DOT  &kp SLASH &kp LSHFT
-            &kp LCTRL &alt_win_td            &mo12  &kp SPACE      &semi_colon_td  &kp MINUS                  &mo 3     &trans
+            &kp ESC   &kp Q    &kp W  &kp E  &kp R  &kp T          &kp Y           &kp U  &kp I      &kp O    &kp P      &kp BSPC
+            &kp TAB   &kp A    &kp S  &kp D  &kp F  &kp G          &kp H           &kp J  &kp K      &kp L    &kp SLASH  &kp ENTER
+            &kp LSHFT &kp Z    &kp X  &kp C  &kp V  &kp B          &kp N           &kp M  &kp COMMA  &kp DOT  &kp JP_YEN &kp LSHFT
+            &kp LCTRL &alt_win_td            &mo12  &kp SPACE      &semi_colon_td  &kp MINUS                  &kp LEFT   &kp RIGHT
         >;
 		//&ec_ms_lとrは、上のビヘイビアで作ったもの。
         sensor-bindings = <&ec_ms_l SCRL_LEFT SCRL_RIGHT &ec_ms_r SCRL_DOWN SCRL_UP>;
