@@ -202,7 +202,7 @@ keymap {
         bindings = <
             &kp ESC   &kp Q    &kp W  &kp E  &kp R  &kp T          &kp Y           &kp U  &kp I      &kp O    &kp P      &kp BSPC
             &kp TAB   &kp A    &kp S  &kp D  &kp F  &kp G          &kp H           &kp J  &kp K      &kp L    &kp SLASH  &kp ENTER
-            &kp LSHFT &kp Z    &kp X  &kp C  &kp V  &kp B          &kp N           &kp M  &kp COMMA  &kp DOT  &kp JP_YEN &kp JP_YEN
+            &kp LSHFT &kp Z    &kp X  &kp C  &kp V  &kp B          &kp N           &kp M  &kp COMMA  &kp DOT  &kp K_APP  &kp JP_YEN
             &kp LCTRL &alt_win_td            &mo12  &kp SPACE      &semi_colon_td  &kp MINUS                  &kp LEFT   &kp RIGHT
         >;
 		//&ec_ms_lとrは、上のビヘイビアで作ったもの。
@@ -211,10 +211,10 @@ keymap {
 
     layer_1 {
         bindings = <
-            &kp ESC   &kp N1   &kp N2  &kp N3  &kp N4  &kp N5      &kp N6    &kp N7    &kp N8    &kp N9    &kp N0 &kp DEL
-            &kp TAB   &trans   &trans  &trans  &trans  &trans      &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &trans &trans
-            &kp LSHFT &trans   &trans  &trans  &trans  &trans      &kp HOME  &kp PG_DN &kp PG_UP &kp END   &trans &trans
-            &kp LCTRL &alt_win_td              &trans  &trans      &trans    &trans                        &trans &trans
+            &kp ESC   &kp N1   &kp N2  &kp N3  &kp N4  &kp N5      &kp N6    &kp N7    &kp N8    &kp N9    &kp N0          &kp DEL
+            &kp TAB   &trans   &trans  &trans  &trans  &trans      &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp JP_LBRACKET &kp JP_RBRACKET
+            &kp LSHFT &trans   &trans  &trans  &trans  &trans      &kp HOME  &kp PG_DN &kp PG_UP &kp END   &trans          &kp INS
+            &kp LCTRL &alt_win_td              &trans  &trans      &kp JP_AT &kp JP_UNDERSCORE             &trans          &trans
         >;
     };
 
