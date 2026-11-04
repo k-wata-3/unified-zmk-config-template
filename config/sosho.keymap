@@ -54,7 +54,7 @@
         mo12: mo12 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <250>;
+            tapping-term-ms = <200>;
             bindings = <&mo 1>, <&mo 2>;
         };
 
@@ -203,6 +203,20 @@
         //-----------------------------------------------------
         //1レイヤーのコンボ
         //-----------------------------------------------------
+        //左のデスクトップへ移動のコンボ 18はLEFTのキー 19はDOWNのキーに相当
+	    combo_LEFT_DESCTOP {
+            timeout-ms = <50>;
+            key-positions = <18 19>;
+            bindings = <&kp LG(LC(LEFT))>; //Ctrl + Win + LEFT
+            layers = <1>; //1番レイヤーでのみ有効にする
+        };
+        //右のデスクトップへ移動のコンボ 20はUPのキー 21はRIGHTのキーに相当
+	    combo_RIGHT_DESCTOP {
+            timeout-ms = <50>;
+            key-positions = <20 21>;
+            bindings = <&kp LG(LC(RIGHT))>; //Ctrl + Win + RIGHT
+            layers = <1>; //1番レイヤーでのみ有効にする
+        };
 
     };
 };
