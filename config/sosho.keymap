@@ -207,21 +207,6 @@
         //-----------------------------------------------------
         //1レイヤーのコンボ
         //-----------------------------------------------------
-        //左のデスクトップへ移動のコンボ 18はLEFTのキー 19はDOWNのキーに相当
-	    combo_LEFT_DESCTOP {
-            timeout-ms = <50>;
-            key-positions = <18 19>;
-            bindings = <&kp SC_GC_left>; //Ctrl + Win + LEFT
-            layers = <1>; //1番レイヤーでのみ有効にする
-        };
-        //右のデスクトップへ移動のコンボ 20はUPのキー 21はRIGHTのキーに相当
-	    combo_RIGHT_DESCTOP {
-            timeout-ms = <50>;
-            key-positions = <20 21>;
-            bindings = <&kp SC_GC_right>; //Ctrl + Win + RIGHT
-            layers = <1>; //1番レイヤーでのみ有効にする
-        };
-
     };
 };
 
@@ -247,7 +232,7 @@ keymap {
             &kp ESC   &kp N1   &kp N2  &kp N3  &kp N4  &kp N5      &kp N6    &kp N7    &kp N8    &kp N9    &kp N0          &kp DEL
             &kp TAB   &trans   &trans  &trans  &trans  &trans      &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &kp JP_LBRACKET &kp JP_RBRACKET
             &kp LSHFT &trans   &trans  &trans  &trans  &trans      &kp HOME  &kp PG_DN &kp PG_UP &kp END   &trans          &kp INS
-            &kp LCTRL &alt_win_td              &trans  &trans      &kp JP_AT &kp JP_UNDERSCORE             &trans          &trans
+            &kp LCTRL &alt_win_td              &trans  &trans      &kp JP_AT &kp JP_UNDERSCORE             &kp SC_GC_left  &kp SC_GC_right
         >;
     };
 
