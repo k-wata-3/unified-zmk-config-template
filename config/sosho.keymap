@@ -32,6 +32,10 @@
 #define SC_CS_esc LS(LC(ESC))
 //ウインドウ起動(Ctrl + Shift + Delete)
 #define SC_CS_del LA(LC(DEL))
+//左のデスクトップへ移動
+#define SC_GC_left LG(LC(LEFT))
+//右のデスクトップへ移動
+#define SC_GC_right LG(LC(RIGHT))
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
@@ -207,14 +211,14 @@
 	    combo_LEFT_DESCTOP {
             timeout-ms = <50>;
             key-positions = <18 19>;
-            bindings = <&kp LG(LC(LEFT))>; //Ctrl + Win + LEFT
+            bindings = <&kp SC_GC_left>; //Ctrl + Win + LEFT
             layers = <1>; //1番レイヤーでのみ有効にする
         };
         //右のデスクトップへ移動のコンボ 20はUPのキー 21はRIGHTのキーに相当
 	    combo_RIGHT_DESCTOP {
             timeout-ms = <50>;
             key-positions = <20 21>;
-            bindings = <&kp LG(LC(RIGHT))>; //Ctrl + Win + RIGHT
+            bindings = <&kp SC_GC_right>; //Ctrl + Win + RIGHT
             layers = <1>; //1番レイヤーでのみ有効にする
         };
 
