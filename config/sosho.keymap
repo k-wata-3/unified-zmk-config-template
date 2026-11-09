@@ -58,7 +58,7 @@
         mo12: mo12 {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <250>;
             bindings = <&mo 1>, <&mo 2>;
         };
 
@@ -115,6 +115,15 @@
             #binding-cells = <0>;
             tapping-term-ms = <150>;
             bindings = <&kp LALT>, <&kp LGUI>;
+        };
+
+        // 1回タップ：右クリックメニュー呼び出し
+        // 2回タップ：タスクビュー(win + tab)
+        menu_taskView: menu_taskView {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <150>;
+            bindings = <&kp K_APP>, <&kp LG(TAB)>;
         };
     };
 };
@@ -207,6 +216,7 @@
         //-----------------------------------------------------
         //1レイヤーのコンボ
         //-----------------------------------------------------
+
     };
 };
 
@@ -217,10 +227,10 @@ keymap {
     //デフォルトレイヤー アルファベットと修飾キーが主
     default_layer {
         bindings = <
-            &kp ESC   &kp Q    &kp W  &kp E  &kp R  &kp T          &kp Y           &kp U  &kp I      &kp O    &kp P      &kp BSPC
-            &kp TAB   &kp A    &kp S  &kp D  &kp F  &kp G          &kp H           &kp J  &kp K      &kp L    &kp SLASH  &kp ENTER
-            &kp LSHFT &kp Z    &kp X  &kp C  &kp V  &kp B          &kp N           &kp M  &kp COMMA  &kp DOT  &kp K_APP  &kp JP_YEN
-            &kp LCTRL &alt_win_td            &mo12  &kp SPACE      &semi_colon_td  &kp MINUS                  &kp LEFT   &kp RIGHT
+            &kp ESC   &kp Q    &kp W  &kp E  &kp R  &kp T          &kp Y           &kp U  &kp I      &kp O    &kp P           &kp BSPC
+            &kp TAB   &kp A    &kp S  &kp D  &kp F  &kp G          &kp H           &kp J  &kp K      &kp L    &kp SLASH       &kp ENTER
+            &kp LSHFT &kp Z    &kp X  &kp C  &kp V  &kp B          &kp N           &kp M  &kp COMMA  &kp DOT  &menu_taskView  &kp JP_YEN
+            &kp LCTRL &alt_win_td            &mo12  &kp SPACE      &semi_colon_td  &kp MINUS                  &kp LEFT        &kp RIGHT
         >;
 		//&ec_ms_lとrは、上のビヘイビアで作ったもの。
         sensor-bindings = <&ec_ms_l SCRL_LEFT SCRL_RIGHT &ec_ms_r SCRL_DOWN SCRL_UP>;
